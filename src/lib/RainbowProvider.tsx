@@ -10,7 +10,10 @@ import {
 } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiProvider } from "wagmi";
-import { metaMaskWallet } from "@rainbow-me/rainbowkit/wallets";
+import {
+    metaMaskWallet,
+    walletConnectWallet,
+} from "@rainbow-me/rainbowkit/wallets";
 
 const { wallets } = getDefaultWallets();
 const lineaSepolia = {
@@ -39,10 +42,10 @@ const config = getDefaultConfig({
     wallets: [
         {
             groupName: "Recommended",
-            wallets: [metaMaskWallet],
+            wallets: [metaMaskWallet, walletConnectWallet],
         },
     ],
-    appName: "My RainbowKit App",
+    appName: "Dalswap App",
     projectId: "YOUR_PROJECT_ID",
     chains: [lineaSepolia],
 });

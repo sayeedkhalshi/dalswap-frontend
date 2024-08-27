@@ -53,6 +53,7 @@ export default function LandingPage() {
                     </h2>
                     <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="text-center">
+                            {/* Secure Icon */}
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -64,7 +65,7 @@ export default function LandingPage() {
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    d="M12 9v3.75l3.25 1.94M19.5 12A7.5 7.5 0 1112 4.5a7.5 7.5 0 017.5 7.5z"
+                                    d="M12 2a9.956 9.956 0 00-4.717 1.268l-.489.285a9.957 9.957 0 00-3.75 3.75l-.285.489A9.956 9.956 0 002 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 110-16 8 8 0 010 16zm0-10.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm0 6.5a1 1 0 110 2 1 1 0 010-2z"
                                 />
                             </svg>
                             <h3 className="mt-4 text-xl font-semibold">
@@ -75,7 +76,9 @@ export default function LandingPage() {
                                 security to protect your investments.
                             </p>
                         </div>
+
                         <div className="text-center">
+                            {/* Fast Icon */}
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -87,7 +90,12 @@ export default function LandingPage() {
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    d="M13.75 4.75l-8.5 14.5m0 0L9.75 12.25m-4.5 7L17 8.5m0 0L14.5 4.75M17 8.5L21 11"
+                                    d="M13 16h-1v-4h-1m0-4h2a2 2 0 110 4h-2v-4zm0 8h-1v2h1v-2z"
+                                />
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M4 7h16M4 11h16M4 15h16M4 19h16"
                                 />
                             </svg>
                             <h3 className="mt-4 text-xl font-semibold">Fast</h3>
@@ -96,7 +104,9 @@ export default function LandingPage() {
                                 minimal fees.
                             </p>
                         </div>
+
                         <div className="text-center">
+                            {/* Decentralized Icon */}
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -108,7 +118,12 @@ export default function LandingPage() {
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    d="M3 10h1v7H3v-7zm4 0h1v4H7v-4zm4 0h1v10h-1V10zm4 0h1v7h-1v-7zm4 0h1v4h-1v-4z"
+                                    d="M12 4.5l6 4.5-6 4.5-6-4.5 6-4.5zm0 0v9m0-9l-6 4.5M12 13.5l6-4.5"
+                                />
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M12 16.5V21m0 0l-6-4.5m6 4.5l6-4.5"
                                 />
                             </svg>
                             <h3 className="mt-4 text-xl font-semibold">
@@ -122,6 +137,7 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
+
             {/* Call to Action Section */}
             <section className="bg-green-600 py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
