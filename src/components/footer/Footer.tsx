@@ -4,7 +4,7 @@ import Link from "next/link";
 const Footer = () => {
     return (
         <Link href="/">
-            <div>Learnea</div>
+            <div>Dalswap</div>
         </Link>
     );
 };

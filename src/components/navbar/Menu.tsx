@@ -1,55 +1,38 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-// import LogoImage from "./LogoImage";
 import LogoText from "./LogoText";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const Menu = () => {
     return (
-        <nav className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div className="relative flex items-center justify-between">
-                <div className="flex items-center px-2 lg:px-0 mx-auto">
-                    {/* <LogoImage /> */}
-                    <LogoText />
-                    <div className=" lg:block lg:ml-6">
-                        <div className="flex space-x-4">
-                            <Link href="/app" className="nav-link">
-                                App
-                            </Link>
-                            <Link
-                                href="https://github.com/sayeedkhalshi/learnea-frontend"
-                                className="nav-link"
-                                target="_blank"
-                            >
-                                Code
-                            </Link>
-                            <Link
-                                href="https://github.com/sayeedkhalshi/learnea-dev-docs/blob/main/initial-philosophy-of-app.md"
-                                className="nav-link"
-                                target="_blank"
-                            >
-                                Whitepaper
-                            </Link>
-                            <Link
-                                href="https://docs.google.com/document/d/1CZJZGOgpnhuC0wVHnj1gvs3N3kLhJ7qmOSfRMLAWNlc/edit?usp=sharing"
-                                className="nav-link"
-                                target="_blank"
-                            >
-                                DevDoc
-                            </Link>
-                            <Link
-                                href="https://twitter.com/sayeedkhalshi"
-                                className="nav-link"
-                                target="_blank"
-                            >
-                                Contact
-                            </Link>
+        <nav className="bg-gray-900 border-b border-gray-800">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16">
+                    {/* Logo Section */}
+                    <div className="flex items-center">
+                        <LogoText />
+                    </div>
 
-                            <div className="ff-monospace">
-                                <ConnectButton label="Login" />
-                            </div>
-                        </div>
+                    {/* Navigation Links */}
+                    <div className="hidden md:flex space-x-8">
+                        <Link
+                            href="/app"
+                            className="nav-link hover:text-green-400"
+                        >
+                            App
+                        </Link>
+                        <Link
+                            href="/app/pool"
+                            className="nav-link hover:text-green-400"
+                        >
+                            Pool
+                        </Link>
+                    </div>
+
+                    {/* Connect Button */}
+                    <div className="flex items-center space-x-4">
+                        <ConnectButton label="Login" />
                     </div>
                 </div>
             </div>
