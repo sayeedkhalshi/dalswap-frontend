@@ -4,7 +4,9 @@ import { TokenModal } from "@/components/modals/TokenModal";
 
 type FormValues = {
     tokenA: string;
+    amountA: string;
     tokenB: string;
+    amountB: string;
 };
 
 export default function SwapForm() {
@@ -26,11 +28,12 @@ export default function SwapForm() {
     return (
         <div className="p-6 bg-gray-800 text-white rounded-lg">
             <form onSubmit={handleSubmit(onSubmit)}>
+                {/* From Section */}
                 <div className="mb-4">
                     <label className="block text-sm font-medium mb-2">
                         From
                     </label>
-                    <div className="relative">
+                    <div className="relative mb-2">
                         <input
                             {...register("tokenA")}
                             type="text"
@@ -40,10 +43,20 @@ export default function SwapForm() {
                             onClick={() => setTokenAModalOpen(true)}
                         />
                     </div>
+                    <div className="relative">
+                        <input
+                            {...register("amountA")}
+                            type="number"
+                            placeholder="Amount"
+                            className="w-full p-3 bg-gray-900 rounded-md"
+                        />
+                    </div>
                 </div>
+
+                {/* To Section */}
                 <div className="mb-4">
                     <label className="block text-sm font-medium mb-2">To</label>
-                    <div className="relative">
+                    <div className="relative mb-2">
                         <input
                             {...register("tokenB")}
                             type="text"
@@ -53,7 +66,16 @@ export default function SwapForm() {
                             onClick={() => setTokenBModalOpen(true)}
                         />
                     </div>
+                    <div className="relative">
+                        <input
+                            {...register("amountB")}
+                            type="number"
+                            placeholder="Amount"
+                            className="w-full p-3 bg-gray-900 rounded-md"
+                        />
+                    </div>
                 </div>
+
                 <button
                     type="submit"
                     className="w-full p-3 bg-green-600 rounded-md hover:bg-green-700"
