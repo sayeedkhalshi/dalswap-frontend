@@ -27,7 +27,7 @@ export default function RootLayout({
                         <Footer />
                     </ReduxProvider>
                 </RainbowProviders>
-                <GoogleAnalytics gaId="G-J9E9LGZ479" />
+                <GoogleAnalytics gaId="G-GNR66WGS35" />
             </body>
         </html>
     );

@@ -1,45 +1,45 @@
 {
-  "name": "dalswap-frontend",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "test": "jest"
-  },
-  "dependencies": {
-    "@next/third-parties": "^14.2.6",
-    "@rainbow-me/rainbowkit": "^2.1.5",
-    "@reduxjs/toolkit": "^2.2.7",
-    "@tanstack/react-query": "^5.52.1",
-    "encoding": "^0.1.13",
-    "moment": "^2.30.1",
-    "next": "14.2.6",
-    "pino-pretty": "^11.2.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-hook-form": "^7.53.0",
-    "react-redux": "^9.1.2",
-    "viem": "^2.20.0",
-    "wagmi": "^2.12.7",
-    "zod": "^3.23.8"
-  },
-  "devDependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.5.0",
-    "@testing-library/react": "^16.0.0",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.6",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
-  }
+    "name": "dalswap-frontend",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "test": "jest"
+    },
+    "dependencies": {
+        "@next/third-parties": "^14.2.6",
+        "@rainbow-me/rainbowkit": "^2.1.5",
+        "@reduxjs/toolkit": "^2.2.7",
+        "@tanstack/react-query": "^5.52.1",
+        "encoding": "^0.1.13",
+        "moment": "^2.30.1",
+        "next": "14.2.6",
+        "pino-pretty": "^11.2.2",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-hook-form": "^7.53.0",
+        "react-redux": "^9.1.2",
+        "viem": "^2.20.0",
+        "wagmi": "^2.12.7",
+        "zod": "^3.23.8"
+    },
+    "devDependencies": {
+        "@testing-library/dom": "^10.4.0",
+        "@testing-library/jest-dom": "^6.5.0",
+        "@testing-library/react": "^16.0.0",
+        "@types/jest": "^29.5.12",
+        "@types/node": "^20",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "eslint": "^8",
+        "eslint-config-next": "14.2.6",
+        "jest": "^29.7.0",
+        "jest-environment-jsdom": "^29.7.0",
+        "postcss": "^8",
+        "tailwindcss": "^3.4.1",
+        "typescript": "^5"
+    }
 }

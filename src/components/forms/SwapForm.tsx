@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { TokenModal } from "@/components/modals/TokenModal";
+import { useWriteContract } from "wagmi";
 
 type FormValues = {
+    tokenASymbol: string;
     tokenA: string;
     amountA: string;
+    tokenBSymbol: string;
     tokenB: string;
     amountB: string;
 };
@@ -13,14 +16,19 @@ export default function SwapForm() {
     const { register, handleSubmit, setValue } = useForm<FormValues>();
     const [isTokenAModalOpen, setTokenAModalOpen] = useState(false);
     const [isTokenBModalOpen, setTokenBModalOpen] = useState(false);
+    const { data: hash, error, isPending, writeContract } = useWriteContract();
 
-    const onSubmit = (data: FormValues) => {
+    const onSubmit = async (data: FormValues) => {
         console.log(data);
         // Handle swap logic here
     };
 
-    const handleTokenSelect = (field: "tokenA" | "tokenB", token: string) => {
-        setValue(field, token);
+    const handleTokenSelect = (
+        field: "tokenA" | "tokenB",
+        token: { symbol: string; address: string }
+    ) => {
+        setValue(field, token.address);
+        setValue(`${field}Symbol`, token.symbol);
         if (field === "tokenA") setTokenAModalOpen(false);
         if (field === "tokenB") setTokenBModalOpen(false);
     };
@@ -35,7 +43,7 @@ export default function SwapForm() {
                     </label>
                     <div className="relative mb-2">
                         <input
-                            {...register("tokenA")}
+                            {...register("tokenASymbol")}
                             type="text"
                             placeholder="Select a token"
                             className="w-full p-3 bg-gray-900 rounded-md"
@@ -43,6 +51,7 @@ export default function SwapForm() {
                             onClick={() => setTokenAModalOpen(true)}
                         />
                     </div>
+                    <input {...register("tokenA")} type="hidden" />
                     <div className="relative">
                         <input
                             {...register("amountA")}
@@ -58,7 +67,7 @@ export default function SwapForm() {
                     <label className="block text-sm font-medium mb-2">To</label>
                     <div className="relative mb-2">
                         <input
-                            {...register("tokenB")}
+                            {...register("tokenBSymbol")}
                             type="text"
                             placeholder="Select a token"
                             className="w-full p-3 bg-gray-900 rounded-md"
@@ -66,6 +75,7 @@ export default function SwapForm() {
                             onClick={() => setTokenBModalOpen(true)}
                         />
                     </div>
+                    <input {...register("tokenB")} type="hidden" />
                     <div className="relative">
                         <input
                             {...register("amountB")}
