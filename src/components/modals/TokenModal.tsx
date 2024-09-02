@@ -3,16 +3,21 @@ import { useState } from "react";
 
 type TokenModalProps = {
     onClose: () => void;
-    onSelect: (token: string) => void;
+    onSelect: (token: { symbol: string; address: string }) => void;
 };
+
+const tokens = [
+    { symbol: "ETH", address: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" },
+    { symbol: "DAI", address: "0x6B175474E89094C44Da98b954EedeAC495271d0F" },
+    { symbol: "USDC", address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48" },
+    { symbol: "WBTC", address: "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599" },
+];
 
 export const TokenModal = ({ onClose, onSelect }: TokenModalProps) => {
     const [searchQuery, setSearchQuery] = useState("");
 
-    const tokens = ["ETH", "DAI", "USDC", "WBTC"]; // Replace with actual token list
-
     const filteredTokens = tokens.filter((token) =>
-        token.toLowerCase().includes(searchQuery.toLowerCase())
+        token.symbol.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     return (
@@ -37,11 +42,11 @@ export const TokenModal = ({ onClose, onSelect }: TokenModalProps) => {
                 <ul className="max-h-48 overflow-y-auto">
                     {filteredTokens.map((token) => (
                         <li
-                            key={token}
+                            key={token.address}
                             onClick={() => onSelect(token)}
                             className="p-2 hover:bg-gray-700 rounded cursor-pointer"
                         >
-                            {token}
+                            {token.symbol}
                         </li>
                     ))}
                 </ul>

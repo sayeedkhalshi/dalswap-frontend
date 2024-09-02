@@ -14,12 +14,13 @@ import {
     metaMaskWallet,
     walletConnectWallet,
 } from "@rainbow-me/rainbowkit/wallets";
+import { baseSepolia, lineaSepolia, sepolia } from "viem/chains";
 
 const { wallets } = getDefaultWallets();
-const lineaSepolia = {
+const zkScamTestnet = {
     id: 63_658,
     name: "ZKScam",
-    iconUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/27657.png",
+    //iconUrl: "https://s2.coinmarketcap.com/static/img/coins/64x64/27657.png",
     iconBackground: "#fff",
     nativeCurrency: { name: "ZKS Ether", symbol: "ETH", decimals: 18 },
     rpcUrls: {
@@ -28,7 +29,7 @@ const lineaSepolia = {
         },
     },
     blockExplorers: {
-        default: { name: "ZKScam Scan", url: "https://zkscam.io/Explore" },
+        default: { name: "ZKScam Scan", url: "https://zkscam.io/" },
     },
     // contracts: {
     //     multicall3: {
@@ -38,16 +39,16 @@ const lineaSepolia = {
     // },
 } as const satisfies Chain;
 
-const config = getDefaultConfig({
+export const config = getDefaultConfig({
     wallets: [
         {
             groupName: "Recommended",
-            wallets: [metaMaskWallet, walletConnectWallet],
+            wallets: [metaMaskWallet],
         },
     ],
     appName: "Dalswap App",
     projectId: "YOUR_PROJECT_ID",
-    chains: [lineaSepolia],
+    chains: [zkScamTestnet, sepolia, lineaSepolia, baseSepolia],
 });
 
 const queryClient = new QueryClient();
