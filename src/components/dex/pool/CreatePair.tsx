@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Footer = () => {
+const CreatePair = () => {
     return (
         <Link href="/">
             <div>Dalswap</div>
@@ -8,4 +8,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default CreatePair;

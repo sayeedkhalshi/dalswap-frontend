@@ -9,6 +9,7 @@ import {
     createPoolSchema,
 } from "@/schema/create-pool.schema";
 import { z } from "zod";
+import PoolCreationCheck from "../dex/pool/PoolCreationCheck";
 
 export default function PoolForm() {
     const {
@@ -24,17 +25,25 @@ export default function PoolForm() {
     const [tokenASymbol, setTokenASymbol] = useState<string>("");
     const [tokenBSymbol, setTokenBSymbol] = useState<string>("");
 
-    const {
-        data: hash,
-        error,
-        isPending,
-        isSuccess,
-        writeContract,
-    } = useWriteContract();
+    const { data: hash, error, isSuccess, writeContract } = useWriteContract();
+
+    if (isSuccess) {
+        console.log("success", hash);
+        return (
+            <PoolCreationCheck
+                hash={hash}
+                tokenA={watch("tokenA") as `0x${string}`}
+                tokenB={watch("tokenB") as `0x${string}`}
+            />
+        );
+    }
 
     const onSubmit = async (data: CreatePoolFormValues) => {
         try {
             await createPoolSchema.parseAsync(data);
+
+            //check if pair already exists
+            // then redirect to add liquidity page. Otherwise create pair
             console.log(data);
             const { tokenA, tokenB } = data;
             writeContract({
@@ -45,50 +54,10 @@ export default function PoolForm() {
             });
 
             if (error) {
-                console.error("Error creating pool:", error);
-            } else if (isSuccess && !isPending) {
-                console.log("Pair created:", hash);
-                // Additional logic can be added here, like handling approvals and adding liquidity
-
-                // // 2. Get the pair address
-                // const pairAddress = await useReadContract({
-                //     abi: FactoryAbi,
-                //     address: "0x9bd8088aa26283a6bdfbb3cffe1a6745bbceca89",
-                //     functionName: "getPair",
-                //     args: [tokenA, tokenB],
-                // });
-
-                // console.log("Pair address:", pairAddress);
-
-                //2. Approve TokenA and TokenB for transfer to the pair contract
-                // writeContract({
-                //     //weth
-                //     address:
-                //         "0x4CC14e64ff9487aD33751952fe2635b7Da21Fd25" as `0x${string}`,
-                //     abi: ERC20Abi, // Replace with the ERC20 ABI
-                //     functionName: "approve",
-                //     args: [pairAddress, amountA],
-                // });
+                return console.error("Error creating pool:", error);
             }
 
-            // writeContract({
-            //     //social token
-            //     address:
-            //         "0xBC7585a64ff438289Eb7F9a77Fb23a91C9c747Ae" as `0x${string}`,
-            //     abi: ERC20Abi,
-            //     functionName: "approve",
-            //     args: [pairAddress, amountB],
-            // });
-
             console.log("Tokens approved for transfer");
-
-            // // 3. Add Liquidity
-            // await writeContract({
-            //     address: pairAddress,
-            //     abi: PairAbi, // Replace with the ABI of the pair contract (UniswapV2Pair)
-            //     functionName: "addLiquidity",
-            //     args: [amountA, amountB],
-            // });
         } catch (error: any) {
             if (error instanceof z.ZodError) {
                 error.errors.forEach((err: any) => {
@@ -116,6 +85,17 @@ export default function PoolForm() {
         }
     };
 
+    const setOppositeValueToEmpty = (tokenSymbol: string) => {
+        if (watch("tokenA") != watch("tokenB")) {
+            return tokenSymbol;
+        } else {
+            // setValue("tokenA", "");
+            //setValue("tokenB", "");
+
+            return "";
+        }
+    };
+
     return (
         <div className="p-6 bg-gray-800 text-white rounded-lg">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -128,7 +108,7 @@ export default function PoolForm() {
                             {...register("tokenA")}
                             type="text"
                             placeholder="Select a token"
-                            value={tokenASymbol}
+                            value={setOppositeValueToEmpty(tokenASymbol)}
                             className="w-full p-3 bg-gray-900 rounded-md"
                             readOnly
                             onClick={() => setTokenAModalOpen(true)}
@@ -144,35 +124,14 @@ export default function PoolForm() {
                             {...register("tokenB")}
                             type="text"
                             placeholder="Select a token"
-                            value={tokenBSymbol}
+                            value={setOppositeValueToEmpty(tokenBSymbol)}
                             className="w-full p-3 bg-gray-900 rounded-md"
                             readOnly
                             onClick={() => setTokenBModalOpen(true)}
                         />
                     </div>
                 </div>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2">
-                        Amount A
-                    </label>
-                    <input
-                        {...register("amountA")}
-                        type="text"
-                        placeholder="Enter amount"
-                        className="w-full p-3 bg-gray-900 rounded-md"
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2">
-                        Amount B
-                    </label>
-                    <input
-                        {...register("amountB")}
-                        type="text"
-                        placeholder="Enter amount"
-                        className="w-full p-3 bg-gray-900 rounded-md"
-                    />
-                </div>
+
                 <button
                     type="submit"
                     className="w-full p-3 bg-green-600 rounded-md hover:bg-green-700"
