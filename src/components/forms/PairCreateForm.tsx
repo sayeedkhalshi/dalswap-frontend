@@ -10,6 +10,7 @@ import {
 } from "@/schema/create-pool.schema";
 import { z } from "zod";
 import PoolCreationCheck from "../dex/pool/PoolCreationCheck";
+import { FACTORY_ADDRESS } from "@/lib/constants";
 
 export default function PoolForm() {
     const {
@@ -48,7 +49,7 @@ export default function PoolForm() {
             const { tokenA, tokenB } = data;
             writeContract({
                 abi: FactoryAbi,
-                address: "0x9bd8088aa26283a6bdfbb3cffe1a6745bbceca89",
+                address: FACTORY_ADDRESS,
                 functionName: "createPair",
                 args: [tokenA, tokenB],
             });

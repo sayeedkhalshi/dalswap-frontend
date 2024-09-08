@@ -1,7 +1,4 @@
 export const API = "http://localhost:3000";
 
-const learnea_v1_contract = "0x24B9a48EBf650c7ddB042c0b84859b8595b67d2C";
-const learneaContractAddresses: `0x${string}`[] = [learnea_v1_contract];
-
-export const learnea_contract_address =
-    learneaContractAddresses[learneaContractAddresses.length - 1];
+export const FACTORY_ADDRESS = "0x2c299728a40c93a3b4c9618de4d8779fc30ddb7f";
+export const ROUTER_ADDRESS = "0xf9a8f24e1ff41b463761aefd17303eb2bebbb879";

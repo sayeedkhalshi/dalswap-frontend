@@ -1,5 +1,6 @@
 import { FactoryAbi } from "@/abi/factory.abi";
 import AmountForm from "@/components/forms/AmountForm";
+import { FACTORY_ADDRESS } from "@/lib/constants";
 import { useReadContract } from "wagmi";
 
 type PoolExistenceCheckProps = {
@@ -16,7 +17,7 @@ const PoolExistenceCheck = ({ tokenA, tokenB }: PoolExistenceCheckProps) => {
         error,
     } = useReadContract({
         abi: FactoryAbi,
-        address: "0x9bd8088aa26283a6bdfbb3cffe1a6745bbceca89",
+        address: FACTORY_ADDRESS,
         functionName: "getPair",
         args: [tokenA, tokenB],
     });
@@ -37,7 +38,7 @@ const PoolExistenceCheck = ({ tokenA, tokenB }: PoolExistenceCheckProps) => {
                 <p>TokenA: {tokenA}</p>
                 <p>TokenB: {tokenB}</p>
                 <AmountForm
-                    submitBtn="Add Amount"
+                    submitBtn="Approve"
                     tokenA={tokenA}
                     tokenB={tokenB}
                     pairAddress={pairAddress as `0x${string}`}
