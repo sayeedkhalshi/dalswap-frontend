@@ -86,7 +86,7 @@ export default function AmountForm({
                 functionName: "approve",
                 args: [
                     ROUTER_ADDRESS, //"0x98f8da3e782b257a3484d88d24620cb687c9588b",
-                    ethers.parseUnits(watch("amountA"), 18), //
+                    ethers.utils.parseUnits(watch("amountA").toString(), 18),
                 ],
             });
         } catch (error: any) {
