@@ -7,36 +7,36 @@ type TokenModalProps = {
 };
 
 const tokens = [
-    { symbol: "BTC", address: "0x0b8b1A60E321F2aE8DBC7EDBdFeB5d69f72532e9" },
-    { symbol: "ETH", address: "0x9820A37c1A5FA25776FE4b2746e4A56d53F0Be9A" },
-    { symbol: "BNB", address: "0xDa814459B15E2D1C794a718727BbB736D654329C" },
-    { symbol: "USDT", address: "0x0B4D97C968D0a6aC58245FCfB46EC0Dead7A79C1" },
-    { symbol: "ADA", address: "0xF431C515500D1Cf1927c58314d6dc513E9AD6755" },
-    { symbol: "SOL", address: "0xCdCdad81a8413dc6aAC48841F2953c89c0EF7255" },
-    { symbol: "XRP", address: "0xe03b49F6112ec3c56eBDAd99CEDF6b2F0a9cD7CA" },
-    { symbol: "DOT", address: "0x37419B8386044f08FA33220ec16F650126Df94b4" },
-    { symbol: "DOGE", address: "0xF24a58509B68cBb4742102535d052ee4E92Bb3aC" },
-    { symbol: "SHIB", address: "0x720c5b89C3283B599A186822F3639E8740567a68" },
-    { symbol: "AVAX", address: "0x8Fc105D5dBa65c6a53c80eF5FfDF864d4Fe38838" },
-    { symbol: "LUNA", address: "0xA6f66D28c6B1544e4DC880a03F4D0fbf43067b84" },
-    { symbol: "LINK", address: "0xbaCe30C6c1F0b709773f3CBf2f7639c1aB6f0d37" },
-    { symbol: "LTC", address: "0xed2Caf8d81f6Fb5ec463f98e3986cA4CFfB0C25a" },
-    { symbol: "UNI", address: "0x982994D2e20BE29A3978DA7D9fa35Dd8F35c8789" },
-    { symbol: "MATIC", address: "0xe0e5554AeD7f2854291E36036a4B6C9751498686" },
-    { symbol: "XLM", address: "0x8D94617217700B6835C3D9e38f2071732738058a" },
-    { symbol: "VET", address: "0xa3570D9c94F4fe2229191DA2325545393d7E7c3f" },
-    { symbol: "TRX", address: "0x604998f2535ae78346834c7260198B3641056b0B" },
-    { symbol: "ATOM", address: "0x4C5b3dF81a0870C7D1F7F1bebEAE28d990789Ac9" },
-    { symbol: "ALGO", address: "0x69fe439B013450827752855B13d174fDC46e8556" },
-    { symbol: "EGLD", address: "0x058dA481b924367feE847357F2a8924Cd4085737" },
-    { symbol: "AAVE", address: "0x7C41dc823DAC0A97735CF20B580F4fFb17c2C180" },
-    { symbol: "FIL", address: "0x3392B1f180a972d7E61787594d19b6c54c714C9f" },
-    { symbol: "XTZ", address: "0x0c3B7e16dCC4cf86713E8eEA0d31d716A4Cc42e7" },
-    { symbol: "THETA", address: "0x8308c677c73F193bF1d2967047CFadBf1DAA7d35" },
-    { symbol: "AXS", address: "0x20590D8C5f288f57Fe3E6dDb7BE65620A3f0C9CE" },
-    { symbol: "EOS", address: "0x12C229B1e66Eb293a98f3f8028C321447Dc4B797" },
-    { symbol: "ZEC", address: "0x8DAcBf55B5dA9B9bAda9fB8d9f80db3723B02a35" },
-    { symbol: "MKR", address: "0x314e8Cac9235D06b46056873109983c0BB188848" },
+    { symbol: "BTC", address: "0x813a68fa74AcAb3051Be6DB0552c05f622DB7842" }, // Bitcoin
+    { symbol: "ETH", address: "0x54c15A037c0F161Edda514f2f8c452ba8514b2C6" }, // Ethereum
+    { symbol: "BNB", address: "0x3DED066d8D0558F036022Dda952Ed3E20e0EAf06" }, // Binance Coin
+    { symbol: "USDT", address: "0x00b029684600F4ce32b7d5A10613a1BE8065007b" }, // Tether
+    { symbol: "ADA", address: "0x638e647644C84692cb95fd93349cca94739c3347" }, // Cardano
+    { symbol: "SOL", address: "0x07C66Fc3567Ed52B2c901A39D1f88b325d4648bC" }, // Solana
+    { symbol: "XRP", address: "0x1009EbB7dECD61F2926b19388cEe335142b505b7" }, // XRP
+    { symbol: "DOT", address: "0x8141caF51e5cF5821d7293c355B34b35A567d096" }, // Polkadot
+    { symbol: "DOGE", address: "0x518Ab1D8C52E412B4B3e07C84aF4e52F537D764f" }, // Dogecoin
+    { symbol: "SHIB", address: "0x0125bb79eD55eB35C8e1866160072eFa60Ed01a0" }, // Shiba Inu
+    { symbol: "AVAX", address: "0xBC3E064839597AD5461Eb424687793C794eC53B9" }, // Avalanche
+    { symbol: "LUNA", address: "0x869b88BAF47607bcAbD318b1502F352859a6cF23" }, // Terra
+    { symbol: "LINK", address: "0x190e46Dcf437090E3d817A09D8B61F4d0abB54d4" }, // Chainlink
+    { symbol: "LTC", address: "0x4d268BF144212DaAff33618b5F12716726B2294F" }, // Litecoin
+    { symbol: "UNI", address: "0x4b44f7a452282Bd62E1C76F829E9ac2717dBd0b9" }, // Uniswap
+    { symbol: "MATIC", address: "0x92B5ae91c9A1A94FE800293185bfAF303d995f45" }, // Polygon
+    { symbol: "XLM", address: "0x95c13c250188Fd0A22c00f92c8A38B1CF68B002c" }, // Stellar
+    { symbol: "VET", address: "0x3C10192B409B80A74Cfdb4D2887FEc42711d68A7" }, // VeChain
+    { symbol: "TRX", address: "0xBDae26070b02BdBa89C8a0968E7388dD19BB6108" }, // TRON
+    { symbol: "ATOM", address: "0xF26672cE731da9D37daE4dB32F7Bec8D851D8393" }, // Cosmos
+    { symbol: "ALGO", address: "0x9e9BCFfD82D3E6fDa6f6Ce95c4c20B7Ca0aF712c" }, // Algorand
+    { symbol: "EGLD", address: "0x9f3F7c39F2B60613822Bd1b5738Ea43973C57a7C" }, // Elrond
+    { symbol: "AAVE", address: "0xDdE158746343d35f2208a6e388bbE1972d2c2Da1" }, // Aave
+    { symbol: "FIL", address: "0x3e3CD3C7785Ec1b0F807cD28Ac45326966ef079A" }, // Filecoin
+    { symbol: "XTZ", address: "0xdEe2f034565Ba9BBA60396cB8e1e82e239De3Dd3" }, // Tezos
+    { symbol: "THETA", address: "0x3F1C0C463e829F094D46F8aD9B971a91533f0474" }, // Theta
+    { symbol: "AXS", address: "0x2BBE76afBA43649085f825CD9254b1602B321a34" }, // Axie Infinity
+    { symbol: "EOS", address: "0xcA585Ae50eBB7441baf2a301DDb57a05923dD9cf" }, // EOS
+    { symbol: "ZEC", address: "0xafca2CCFf7b2dd982CC8E6856aD1770FD3733089" }, // Zcash
+    { symbol: "MKR", address: "0xf43ece737be5fA5b865981050b8A1CFdFbc1a944" }, // Maker
 ];
 
 export const TokenModal = ({ onClose, onSelect }: TokenModalProps) => {

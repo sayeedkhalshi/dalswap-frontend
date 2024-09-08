@@ -1,17 +1,16 @@
 // components/TokenPool.tsx
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import {
-    useReadContract,
-    useWaitForTransactionReceipt,
-    useWriteContract,
-} from "wagmi";
+import { useAccount, useWriteContract } from "wagmi";
 import {
     AddAmountFormValues,
     addAmountSchema,
 } from "@/schema/add-amount.schema";
 import { z } from "zod";
 import { ERC20Abi } from "@/abi/erc20.abi";
+import ApproveB from "../dex/pool/ApproveB";
+import { ethers } from "ethers";
+import { ROUTER_ADDRESS } from "@/lib/constants";
 
 type AmountFormProps = {
     tokenA: `0x${string}`;
@@ -26,6 +25,15 @@ export default function AmountForm({
     tokenB,
     pairAddress,
 }: AmountFormProps) {
+    const account = useAccount();
+    const {
+        data: hash,
+        error,
+        isError,
+        isPending,
+        isSuccess,
+        writeContract,
+    } = useWriteContract();
     const {
         register,
         handleSubmit,
@@ -38,42 +46,49 @@ export default function AmountForm({
     const [tokenASymbol, setTokenASymbol] = useState<string>("");
     const [tokenBSymbol, setTokenBSymbol] = useState<string>("");
 
-    const {
-        data: hash,
-        error,
-        isPending,
-        isSuccess,
-        writeContract,
-    } = useWriteContract();
+    if (isError) {
+        return (
+            <div className="bg-red-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-red-600 transition">
+                <p>ApproveA error</p>
+            </div>
+        );
+    }
 
-    console.log("amountform loaded", pairAddress);
+    if (isPending) {
+        return (
+            <div className="bg-green-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-green-600 transition">
+                <p>ApproveA happening</p>
+            </div>
+        );
+    }
+
+    if (isSuccess) {
+        console.log("approveA success", hash, "pair", pairAddress);
+        return (
+            <ApproveB
+                tokenA={tokenA}
+                tokenB={tokenB}
+                amountA={watch("amountA")}
+                amountB={watch("amountB")}
+                pairAddress={pairAddress}
+            />
+        );
+    }
 
     const onSubmit = async (data: AddAmountFormValues) => {
         try {
             await addAmountSchema.parseAsync(data);
 
-            // 2. Approve TokenA and TokenB for transfer to the pair contract
             writeContract({
                 //weth
                 address: tokenA,
                 abi: ERC20Abi, // Replace with the ERC20 ABI
                 functionName: "approve",
-                args: [pairAddress, watch("amountA")],
+                args: [
+                    ROUTER_ADDRESS, //"0x98f8da3e782b257a3484d88d24620cb687c9588b",
+                    ethers.parseUnits(watch("amountA"), 18), //
+                ],
             });
-
-            //3. Approve TokenA and TokenB for transfer to the pair contract
-            writeContract({
-                //weth
-                address: tokenB,
-                abi: ERC20Abi, // Replace with the ERC20 ABI
-                functionName: "approve",
-                args: [pairAddress, watch("amountB")],
-            });
-
-            //check if pair already exists
-            // then redirect to add liquidity page. Otherwise create pair
-            console.log(data);
-            const { amountA, amountB } = data;
         } catch (error: any) {
             if (error instanceof z.ZodError) {
                 error.errors.forEach((err: any) => {

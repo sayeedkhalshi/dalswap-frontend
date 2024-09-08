@@ -7,6 +7,7 @@ import { PairAbi } from "@/abi/pair.abi";
 import { FactoryAbi } from "@/abi/factory.abi";
 import { SinglePair } from "./SinglePair";
 import Link from "next/link";
+import { FACTORY_ADDRESS } from "@/lib/constants";
 
 export const PairList = () => {
     const {
@@ -19,49 +20,49 @@ export const PairList = () => {
         contracts: [
             {
                 abi: FactoryAbi,
-                address: "0x9bd8088aa26283a6bdfbb3cffe1a6745bbceca89",
+                address: FACTORY_ADDRESS,
                 functionName: "allPairs",
                 args: [1],
             },
             {
                 abi: FactoryAbi,
-                address: "0x9bd8088aa26283a6bdfbb3cffe1a6745bbceca89",
+                address: FACTORY_ADDRESS,
                 functionName: "allPairs",
                 args: [2],
             },
             {
                 abi: FactoryAbi,
-                address: "0x9bd8088aa26283a6bdfbb3cffe1a6745bbceca89",
+                address: FACTORY_ADDRESS,
                 functionName: "allPairs",
                 args: [3],
             },
             {
                 abi: FactoryAbi,
-                address: "0x9bd8088aa26283a6bdfbb3cffe1a6745bbceca89",
+                address: FACTORY_ADDRESS,
                 functionName: "allPairs",
                 args: [4],
             },
             {
                 abi: FactoryAbi,
-                address: "0x9bd8088aa26283a6bdfbb3cffe1a6745bbceca89",
+                address: FACTORY_ADDRESS,
                 functionName: "allPairs",
                 args: [5],
             },
             {
                 abi: FactoryAbi,
-                address: "0x9bd8088aa26283a6bdfbb3cffe1a6745bbceca89",
+                address: FACTORY_ADDRESS,
                 functionName: "allPairs",
                 args: [6],
             },
             {
                 abi: FactoryAbi,
-                address: "0x9bd8088aa26283a6bdfbb3cffe1a6745bbceca89",
+                address: FACTORY_ADDRESS,
                 functionName: "allPairs",
                 args: [7],
             },
             {
                 abi: FactoryAbi,
-                address: "0x9bd8088aa26283a6bdfbb3cffe1a6745bbceca89",
+                address: FACTORY_ADDRESS,
                 functionName: "allPairs",
                 args: [8],
             },
