@@ -15,6 +15,7 @@
         "@reduxjs/toolkit": "^2.2.7",
         "@tanstack/react-query": "^5.52.1",
         "encoding": "^0.1.13",
+        "ethers": "^6.13.2",
         "moment": "^2.30.1",
         "next": "14.2.6",
         "pino-pretty": "^11.2.2",
