@@ -30,17 +30,23 @@ const AddLiquidity = ({
         // 3. Add Liquidity
         writeContract({
             address: ROUTER_ADDRESS, //router address
-            abi: RouterV2Abi, // Replace with the ABI of the pair contract (UniswapV2Pair)
+            abi: RouterV2Abi,
             functionName: "addLiquidity",
             args: [
                 tokenA, // Address of token A
                 tokenB, // Address of token B
-                ethers.parseUnits(amountA.toString(), 18), // Amount of token A
-                ethers.parseUnits(amountB.toString(), 18), // Amount of token B
-                ethers.parseUnits("0.05", 18), // Minimum amount of Token A (adjust slippage tolerance)
-                ethers.parseUnits("0.05", 18), // Minimum amount of Token A (adjust slippage tolerance)
+                ethers.utils.parseUnits(amountA.toString(), 18), // Amount of token A
+                ethers.utils.parseUnits(amountB.toString(), 18), // Amount of token B
+                ethers.utils
+                    .parseUnits(amountA.toString(), 18)
+                    .mul(ethers.BigNumber.from(10000 - 0.5 * 100))
+                    .div(10000),
+                ethers.utils
+                    .parseUnits(amountB.toString(), 18)
+                    .mul(ethers.BigNumber.from(10000 - 0.5 * 100))
+                    .div(10000),
                 account.address, // The address that will receive the liquidity tokens
-                Math.floor(Date.now() / 1000) + 60 * 10, // Deadline (10 minutes from now)
+                Math.floor(Date.now() / 1000) + 60 * 1000, // Deadline (10 minutes from now)
             ],
         });
     };

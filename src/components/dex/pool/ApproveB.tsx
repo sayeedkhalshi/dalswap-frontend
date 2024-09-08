@@ -64,7 +64,7 @@ const ApproveB = ({
             functionName: "approve",
             args: [
                 ROUTER_ADDRESS, //"0x98f8da3e782b257a3484d88d24620cb687c9588b",
-                ethers.parseUnits(amountB, 18), //
+                ethers.utils.parseUnits(amountB.toString(), 18),
             ],
         });
     };
