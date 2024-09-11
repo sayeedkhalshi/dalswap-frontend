@@ -39,6 +39,28 @@ const zkScamTestnet = {
     // },
 } as const satisfies Chain;
 
+const tabiTestnet = {
+    id: 9_789,
+    name: "Tabi Testnet",
+    iconUrl: "https://www.tabichain.com/logo.svg",
+    iconBackground: "#fff",
+    nativeCurrency: { name: "Tabi", symbol: "TABI", decimals: 18 },
+    rpcUrls: {
+        default: {
+            http: ["https://rpc.testnet.tabichain.com"],
+        },
+    },
+    blockExplorers: {
+        default: { name: "Tabi Scan", url: "https://testnet.tabiscan.com/" },
+    },
+    // contracts: {
+    //     multicall3: {
+    //         address: "0xca11bde05977b3631167028862be2a173976ca11",
+    //         blockCreated: 11_907_934,
+    //     },
+    // },
+} as const satisfies Chain;
+
 export const config = getDefaultConfig({
     wallets: [
         {
@@ -48,7 +70,7 @@ export const config = getDefaultConfig({
     ],
     appName: "Dalswap App",
     projectId: "YOUR_PROJECT_ID",
-    chains: [zkScamTestnet, sepolia, lineaSepolia, baseSepolia],
+    chains: [tabiTestnet, zkScamTestnet, sepolia, lineaSepolia, baseSepolia],
 });
 
 const queryClient = new QueryClient();
