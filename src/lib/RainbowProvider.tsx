@@ -40,18 +40,19 @@ const zkScamTestnet = {
 } as const satisfies Chain;
 
 const tabiTestnet = {
-    id: 9_789,
+    id: 9_788,
+    contracts: {},
     name: "Tabi Testnet",
     iconUrl: "https://www.tabichain.com/logo.svg",
     iconBackground: "#fff",
     nativeCurrency: { name: "Tabi", symbol: "TABI", decimals: 18 },
     rpcUrls: {
         default: {
-            http: ["https://rpc.testnet.tabichain.com"],
+            http: ["https://rpc.testnetv2.tabichain.com"],
         },
     },
     blockExplorers: {
-        default: { name: "Tabi Scan", url: "https://testnet.tabiscan.com/" },
+        default: { name: "Tabi Scan", url: "https://testnetv2.tabiscan.com/" },
     },
     // contracts: {
     //     multicall3: {

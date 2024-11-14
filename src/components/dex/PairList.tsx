@@ -7,9 +7,13 @@ import { PairAbi } from "@/abi/pair.abi";
 import { FactoryAbi } from "@/abi/factory.abi";
 import { SinglePair } from "./SinglePair";
 import Link from "next/link";
-import { FACTORY_ADDRESS } from "@/lib/constants";
+import { useGetAddresses } from "@/hooks/useGetAddresses";
 
 export const PairList = () => {
+    const addresses = useGetAddresses();
+
+    const FACTORY_ADDRESS = addresses?.factory;
+
     const {
         data: pairAddresses,
         isPending,

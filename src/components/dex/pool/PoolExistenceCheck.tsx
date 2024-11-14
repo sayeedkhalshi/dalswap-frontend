@@ -1,6 +1,6 @@
 import { FactoryAbi } from "@/abi/factory.abi";
 import AmountForm from "@/components/forms/AmountForm";
-import { FACTORY_ADDRESS } from "@/lib/constants";
+import { useGetAddresses } from "@/hooks/useGetAddresses";
 import { useReadContract } from "wagmi";
 
 type PoolExistenceCheckProps = {
@@ -9,6 +9,8 @@ type PoolExistenceCheckProps = {
 };
 
 const PoolExistenceCheck = ({ tokenA, tokenB }: PoolExistenceCheckProps) => {
+    const addresses = useGetAddresses();
+    const FACTORY_ADDRESS = addresses.factory;
     const {
         data: pairAddress,
         isError,

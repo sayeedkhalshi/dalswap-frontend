@@ -2,7 +2,7 @@ import { PairAbi } from "@/abi/pair.abi";
 import { RouterV2Abi } from "@/abi/routerV2.abi";
 import { useWriteContract, useAccount } from "wagmi";
 import { ethers } from "ethers";
-import { ROUTER_ADDRESS } from "@/lib/constants";
+import { useGetAddresses } from "@/hooks/useGetAddresses";
 
 const AddLiquidity = ({
     tokenA,
@@ -17,6 +17,10 @@ const AddLiquidity = ({
     amountB: string;
     pairAddress: `0x${string}`;
 }) => {
+    const addresses = useGetAddresses();
+
+    const ROUTER_ADDRESS = addresses?.router;
+
     const account = useAccount();
     const {
         data: hash,

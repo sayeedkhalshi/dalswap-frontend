@@ -10,9 +10,11 @@ import {
 } from "@/schema/create-pool.schema";
 import { z } from "zod";
 import PoolCreationCheck from "../dex/pool/PoolCreationCheck";
-import { FACTORY_ADDRESS } from "@/lib/constants";
+import { useGetAddresses } from "@/hooks/useGetAddresses";
 
 export default function PoolForm() {
+    const addresses = useGetAddresses();
+    const FACTORY_ADDRESS = addresses.factory;
     const {
         register,
         handleSubmit,
