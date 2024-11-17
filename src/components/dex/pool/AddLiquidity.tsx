@@ -2,7 +2,7 @@ import { PairAbi } from "@/abi/pair.abi";
 import { RouterV2Abi } from "@/abi/routerV2.abi";
 import { useWriteContract, useAccount } from "wagmi";
 import { ethers } from "ethers";
-import { ROUTER_ADDRESS } from "@/lib/constants";
+import { useGetAddresses } from "@/hooks/useGetAddresses";
 
 const AddLiquidity = ({
     tokenA,
@@ -17,6 +17,12 @@ const AddLiquidity = ({
     amountB: string;
     pairAddress: `0x${string}`;
 }) => {
+    const addresses = useGetAddresses();
+
+    const ROUTER_ADDRESS = addresses?.router;
+
+    console.log("router address", ROUTER_ADDRESS);
+
     const account = useAccount();
     const {
         data: hash,
@@ -28,25 +34,28 @@ const AddLiquidity = ({
     } = useWriteContract();
     const addLiquidity = () => {
         // 3. Add Liquidity
+        const SLIPPAGE = 0.0035; // 0.35% slippage
+        const deadline = Math.floor(Date.now() / 1000) + 60 * 5; // 5-minute deadline buffer
+
         writeContract({
-            address: ROUTER_ADDRESS, //router address
+            address: ROUTER_ADDRESS, // router address
             abi: RouterV2Abi,
             functionName: "addLiquidity",
             args: [
                 tokenA, // Address of token A
                 tokenB, // Address of token B
-                ethers.utils.parseUnits(amountA.toString(), 18), // Amount of token A
-                ethers.utils.parseUnits(amountB.toString(), 18), // Amount of token B
+                ethers.utils.parseUnits(amountA.toString(), 18), // Desired amount of token A
+                ethers.utils.parseUnits(amountB.toString(), 18), // Desired amount of token B
                 ethers.utils
                     .parseUnits(amountA.toString(), 18)
-                    .mul(ethers.BigNumber.from(10000 - 0.5 * 100))
-                    .div(10000),
+                    .mul(ethers.BigNumber.from(10000 - SLIPPAGE * 10000))
+                    .div(10000), // Minimum amount of token A
                 ethers.utils
                     .parseUnits(amountB.toString(), 18)
-                    .mul(ethers.BigNumber.from(10000 - 0.5 * 100))
-                    .div(10000),
-                account.address, // The address that will receive the liquidity tokens
-                Math.floor(Date.now() / 1000) + 60 * 1000, // Deadline (10 minutes from now)
+                    .mul(ethers.BigNumber.from(10000 - SLIPPAGE * 10000))
+                    .div(10000), // Minimum amount of token B
+                account.address, // Recipient of liquidity tokens
+                deadline, // Deadline
             ],
         });
     };

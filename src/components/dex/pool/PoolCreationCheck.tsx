@@ -13,6 +13,7 @@ const PoolCreationCheck = ({
     tokenA,
     tokenB,
 }: PoolCreationCheckProps) => {
+    console.log("a", tokenA, "b", tokenB);
     const { data, isError, isPending, isSuccess, error } =
         useWaitForTransactionReceipt({
             hash,

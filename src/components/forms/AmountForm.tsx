@@ -10,7 +10,7 @@ import { z } from "zod";
 import { ERC20Abi } from "@/abi/erc20.abi";
 import ApproveB from "../dex/pool/ApproveB";
 import { ethers } from "ethers";
-import { ROUTER_ADDRESS } from "@/lib/constants";
+import { useGetAddresses } from "@/hooks/useGetAddresses";
 
 type AmountFormProps = {
     tokenA: `0x${string}`;
@@ -25,7 +25,9 @@ export default function AmountForm({
     tokenB,
     pairAddress,
 }: AmountFormProps) {
-    const account = useAccount();
+    const addresses = useGetAddresses();
+
+    const ROUTER_ADDRESS = addresses?.router;
     const {
         data: hash,
         error,
@@ -47,6 +49,7 @@ export default function AmountForm({
     const [tokenBSymbol, setTokenBSymbol] = useState<string>("");
 
     if (isError) {
+        console.log("approve a err before", error);
         return (
             <div className="bg-red-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-red-600 transition">
                 <p>ApproveA error</p>
@@ -79,6 +82,8 @@ export default function AmountForm({
         try {
             await addAmountSchema.parseAsync(data);
 
+            console.log("aap", tokenA, tokenB, ROUTER_ADDRESS);
+
             writeContract({
                 //weth
                 address: tokenA,
@@ -86,7 +91,7 @@ export default function AmountForm({
                 functionName: "approve",
                 args: [
                     ROUTER_ADDRESS, //"0x98f8da3e782b257a3484d88d24620cb687c9588b",
-                    ethers.utils.parseUnits(watch("amountA").toString(), 18),
+                    ethers.constants.MaxUint256,
                 ],
             });
         } catch (error: any) {

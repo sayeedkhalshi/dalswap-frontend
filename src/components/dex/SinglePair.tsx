@@ -16,6 +16,7 @@ type Reserves = [
     blockTimestampLast: number
 ];
 export const SinglePair = ({ address }: { address: `0x${string}` }) => {
+    console.log("single pair addr", address);
     const {
         data: pairDetails,
         isPending,

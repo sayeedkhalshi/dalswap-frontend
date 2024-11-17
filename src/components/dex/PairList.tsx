@@ -7,9 +7,13 @@ import { PairAbi } from "@/abi/pair.abi";
 import { FactoryAbi } from "@/abi/factory.abi";
 import { SinglePair } from "./SinglePair";
 import Link from "next/link";
-import { FACTORY_ADDRESS } from "@/lib/constants";
+import { useGetAddresses } from "@/hooks/useGetAddresses";
 
 export const PairList = () => {
+    const addresses = useGetAddresses();
+
+    const FACTORY_ADDRESS = addresses?.factory;
+
     const {
         data: pairAddresses,
         isPending,
@@ -22,6 +26,12 @@ export const PairList = () => {
                 abi: FactoryAbi,
                 address: FACTORY_ADDRESS,
                 functionName: "allPairs",
+                args: [0],
+            },
+            {
+                abi: FactoryAbi,
+                address: FACTORY_ADDRESS,
+                functionName: "allPairs",
                 args: [1],
             },
             {
@@ -30,42 +40,42 @@ export const PairList = () => {
                 functionName: "allPairs",
                 args: [2],
             },
-            {
-                abi: FactoryAbi,
-                address: FACTORY_ADDRESS,
-                functionName: "allPairs",
-                args: [3],
-            },
-            {
-                abi: FactoryAbi,
-                address: FACTORY_ADDRESS,
-                functionName: "allPairs",
-                args: [4],
-            },
-            {
-                abi: FactoryAbi,
-                address: FACTORY_ADDRESS,
-                functionName: "allPairs",
-                args: [5],
-            },
-            {
-                abi: FactoryAbi,
-                address: FACTORY_ADDRESS,
-                functionName: "allPairs",
-                args: [6],
-            },
-            {
-                abi: FactoryAbi,
-                address: FACTORY_ADDRESS,
-                functionName: "allPairs",
-                args: [7],
-            },
-            {
-                abi: FactoryAbi,
-                address: FACTORY_ADDRESS,
-                functionName: "allPairs",
-                args: [8],
-            },
+            // {
+            //     abi: FactoryAbi,
+            //     address: FACTORY_ADDRESS,
+            //     functionName: "allPairs",
+            //     args: [3],
+            // },
+            // {
+            //     abi: FactoryAbi,
+            //     address: FACTORY_ADDRESS,
+            //     functionName: "allPairs",
+            //     args: [4],
+            // },
+            // {
+            //     abi: FactoryAbi,
+            //     address: FACTORY_ADDRESS,
+            //     functionName: "allPairs",
+            //     args: [5],
+            // },
+            // {
+            //     abi: FactoryAbi,
+            //     address: FACTORY_ADDRESS,
+            //     functionName: "allPairs",
+            //     args: [6],
+            // },
+            // {
+            //     abi: FactoryAbi,
+            //     address: FACTORY_ADDRESS,
+            //     functionName: "allPairs",
+            //     args: [7],
+            // },
+            // {
+            //     abi: FactoryAbi,
+            //     address: FACTORY_ADDRESS,
+            //     functionName: "allPairs",
+            //     args: [8],
+            // },
         ],
     });
 

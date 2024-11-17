@@ -2,7 +2,7 @@ import { ERC20Abi } from "@/abi/erc20.abi";
 import { useWriteContract } from "wagmi";
 import AddLiquidity from "./AddLiquidity";
 import { ethers } from "ethers";
-import { ROUTER_ADDRESS } from "@/lib/constants";
+import { useGetAddresses } from "@/hooks/useGetAddresses";
 
 const ApproveB = ({
     tokenA,
@@ -12,11 +12,14 @@ const ApproveB = ({
     pairAddress,
 }: {
     tokenA: `0x${string}`;
-    tokenB: `0x${string}`;
     amountA: string;
+    tokenB: `0x${string}`;
     amountB: string;
     pairAddress: `0x${string}`;
 }) => {
+    const addresses = useGetAddresses();
+
+    const ROUTER_ADDRESS = addresses?.router;
     const {
         data: hash,
         error,
@@ -64,7 +67,9 @@ const ApproveB = ({
             functionName: "approve",
             args: [
                 ROUTER_ADDRESS, //"0x98f8da3e782b257a3484d88d24620cb687c9588b",
-                ethers.utils.parseUnits(amountB.toString(), 18),
+                ethers.constants.MaxUint256,
+
+                //ethers.utils.parseUnits(amountB.toString(), 18),
             ],
         });
     };
