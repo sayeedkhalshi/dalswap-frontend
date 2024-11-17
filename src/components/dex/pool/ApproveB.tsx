@@ -12,8 +12,8 @@ const ApproveB = ({
     pairAddress,
 }: {
     tokenA: `0x${string}`;
-    tokenB: `0x${string}`;
     amountA: string;
+    tokenB: `0x${string}`;
     amountB: string;
     pairAddress: `0x${string}`;
 }) => {
@@ -67,7 +67,9 @@ const ApproveB = ({
             functionName: "approve",
             args: [
                 ROUTER_ADDRESS, //"0x98f8da3e782b257a3484d88d24620cb687c9588b",
-                ethers.utils.parseUnits(amountB.toString(), 18),
+                ethers.constants.MaxUint256,
+
+                //ethers.utils.parseUnits(amountB.toString(), 18),
             ],
         });
     };

@@ -49,6 +49,8 @@ export default function PoolForm() {
             // then redirect to add liquidity page. Otherwise create pair
             console.log(data);
             const { tokenA, tokenB } = data;
+            console.log("pair create form - tokenA", tokenA);
+            console.log("pair create form - tokenB", tokenB);
             writeContract({
                 abi: FactoryAbi,
                 address: FACTORY_ADDRESS,
@@ -90,6 +92,7 @@ export default function PoolForm() {
 
     const setOppositeValueToEmpty = (tokenSymbol: string) => {
         if (watch("tokenA") != watch("tokenB")) {
+            console.log("token symbol", tokenSymbol);
             return tokenSymbol;
         } else {
             // setValue("tokenA", "");

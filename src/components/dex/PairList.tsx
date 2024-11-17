@@ -26,6 +26,12 @@ export const PairList = () => {
                 abi: FactoryAbi,
                 address: FACTORY_ADDRESS,
                 functionName: "allPairs",
+                args: [0],
+            },
+            {
+                abi: FactoryAbi,
+                address: FACTORY_ADDRESS,
+                functionName: "allPairs",
                 args: [1],
             },
             {
@@ -34,42 +40,42 @@ export const PairList = () => {
                 functionName: "allPairs",
                 args: [2],
             },
-            {
-                abi: FactoryAbi,
-                address: FACTORY_ADDRESS,
-                functionName: "allPairs",
-                args: [3],
-            },
-            {
-                abi: FactoryAbi,
-                address: FACTORY_ADDRESS,
-                functionName: "allPairs",
-                args: [4],
-            },
-            {
-                abi: FactoryAbi,
-                address: FACTORY_ADDRESS,
-                functionName: "allPairs",
-                args: [5],
-            },
-            {
-                abi: FactoryAbi,
-                address: FACTORY_ADDRESS,
-                functionName: "allPairs",
-                args: [6],
-            },
-            {
-                abi: FactoryAbi,
-                address: FACTORY_ADDRESS,
-                functionName: "allPairs",
-                args: [7],
-            },
-            {
-                abi: FactoryAbi,
-                address: FACTORY_ADDRESS,
-                functionName: "allPairs",
-                args: [8],
-            },
+            // {
+            //     abi: FactoryAbi,
+            //     address: FACTORY_ADDRESS,
+            //     functionName: "allPairs",
+            //     args: [3],
+            // },
+            // {
+            //     abi: FactoryAbi,
+            //     address: FACTORY_ADDRESS,
+            //     functionName: "allPairs",
+            //     args: [4],
+            // },
+            // {
+            //     abi: FactoryAbi,
+            //     address: FACTORY_ADDRESS,
+            //     functionName: "allPairs",
+            //     args: [5],
+            // },
+            // {
+            //     abi: FactoryAbi,
+            //     address: FACTORY_ADDRESS,
+            //     functionName: "allPairs",
+            //     args: [6],
+            // },
+            // {
+            //     abi: FactoryAbi,
+            //     address: FACTORY_ADDRESS,
+            //     functionName: "allPairs",
+            //     args: [7],
+            // },
+            // {
+            //     abi: FactoryAbi,
+            //     address: FACTORY_ADDRESS,
+            //     functionName: "allPairs",
+            //     args: [8],
+            // },
         ],
     });
 

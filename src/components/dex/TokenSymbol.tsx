@@ -26,6 +26,7 @@ export const TokenSymbol = ({ address }: { address: `0x${string}` }) => {
         return "";
     }
     if (isSuccess) {
+        console.log("as", tokenSymbol);
         return <strong>{tokenSymbol.toString()}</strong>;
     }
 };

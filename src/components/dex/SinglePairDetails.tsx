@@ -18,6 +18,8 @@ type Reserves = [
 
 // Main component
 export const SinglePairDetails = ({ address }: { address: `0x${string}` }) => {
+    console.log("pair addr", address);
+
     const {
         data: pairDetails,
         isPending,
@@ -57,6 +59,7 @@ export const SinglePairDetails = ({ address }: { address: `0x${string}` }) => {
 
     if (isSuccess) {
         const reserve = pairDetails[0].result;
+        console.log("single pairDetails", pairDetails);
 
         return (
             <div className="bg-gray-900 text-white p-6 rounded-lg">
@@ -92,7 +95,7 @@ export const SinglePairDetails = ({ address }: { address: `0x${string}` }) => {
                         <AmountForm
                             submitBtn="Remove"
                             pairAddress={address}
-                            tokenA={pairDetails[2].result}
+                            tokenA={pairDetails[1].result}
                             tokenB={pairDetails[2].result}
                         />
                     </div>

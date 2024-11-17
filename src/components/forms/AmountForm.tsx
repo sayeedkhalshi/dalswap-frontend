@@ -82,6 +82,8 @@ export default function AmountForm({
         try {
             await addAmountSchema.parseAsync(data);
 
+            console.log("aap", tokenA, tokenB, ROUTER_ADDRESS);
+
             writeContract({
                 //weth
                 address: tokenA,
@@ -89,7 +91,7 @@ export default function AmountForm({
                 functionName: "approve",
                 args: [
                     ROUTER_ADDRESS, //"0x98f8da3e782b257a3484d88d24620cb687c9588b",
-                    ethers.utils.parseUnits(watch("amountA").toString(), 18),
+                    ethers.constants.MaxUint256,
                 ],
             });
         } catch (error: any) {
